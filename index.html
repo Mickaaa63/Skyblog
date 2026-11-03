@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>★ Mick et ses Bombasses ★ Skyblog 2003 ★</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&amp;family=Press+Start+2P&amp;display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #000 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="10" cy="10" r="1.5" fill="%23ff00ff"/><circle cx="30" cy="25" r="1" fill="%2300ffff"/><circle cx="20" cy="35" r="1.2" fill="%23ffff00"/></svg>') repeat;
+  color: #fff;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+  background-size: 200% 100%;
+  animation: rainbow 3s linear infinite;
+  text-align: center;
+  padding: 15px 10px;
+  border: 4px solid #fff;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+  position: relative;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.header h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #ff00aa, -2px -2px 0 #00ffff;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.header .subtitle {
+  font-size: 16px;
+  color: #ffff00;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.blink {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* LAYOUT */
+.main-layout {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* SIDEBAR BOXES */
+.box {
+  background: rgba(20, 0, 40, 0.9);
+  border: 3px solid #ff00ff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.box-title {
+  background: linear-gradient(90deg, #ff00aa, #aa00ff);
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 10px;
+  font-size: 14px;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000;
+  border-bottom: 2px solid #fff;
+}
+
+.box-content {
+  padding: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* PROFILE */
+.profile-pic {
+  width: 100%;
+  border-radius: 8px;
+  border: 3px solid #00ffff;
+  margin-bottom: 8px;
+}
+
+.profile-info {
+  text-align: center;
+  color: #ffccff;
+}
+
+.profile-info strong {
+  color: #00ffff;
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* MUSIC PLAYER */
+.music-player {
+  background: #111;
+  border: 2px solid #00ff00;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.now-playing {
+  background: #002200;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 11px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-list {
+  list-style: none;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.track-list li {
+  padding: 3px 0;
+  border-bottom: 1px dotted #333;
+  cursor: pointer;
+  color: #ffcc00;
+  font-size: 12px;
+}
+
+.track-list li:hover {
+  color: #00ffff;
+  background: #220033;
+}
+
+.track-list li.active {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.player-controls button {
+  background: #330055;
+  border: 1px solid #ff00ff;
+  color: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.player-controls button:hover {
+  background: #ff00ff;
+}
+
+/* GUESTBOOK */
+.guestbook-entry {
+  background: rgba(255,255,255,0.05);
+  border-left: 3px solid #ff00aa;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.guestbook-entry .author {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.guestbook-entry .date {
+  color: #aaa;
+  font-size: 10px;
+}
+
+/* CONTENT POSTS */
+.post {
+  background: rgba(30, 0, 50, 0.85);
+  border: 3px solid #00ffff;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.post-header {
+  background: linear-gradient(90deg, #00aaff, #ff00aa);
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-date {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.post-body {
+  padding: 12px;
+}
+
+.post-body p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #ffe6ff;
+}
+
+.post-body .hearts {
+  color: #ff66aa;
+  font-size: 18px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border: 3px solid #ff00ff;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+.big-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border: 4px solid #ff00ff;
+  border-radius: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.6);
+}
+
+.caption {
+  text-align: center;
+  font-style: italic;
+  color: #ffcc00;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  border-top: 3px solid #ff00ff;
+  font-size: 12px;
+  color: #ff99cc;
+}
+
+.footer a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+/* SPARKLES / DECOR */
+.sparkle {
+  position: absolute;
+  font-size: 20px;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-15px) rotate(20deg); opacity: 0.7; }
+}
+
+.marquee {
+  background: #220033;
+  color: #00ff00;
+  padding: 4px;
+  font-size: 12px;
+  border: 1px solid #00ff00;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* COUNTER */
+.counter {
+  text-align: center;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .sidebar { width: 100%; }
+  .header h1 { font-size: 16px; }
+  .photo-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="sparkle" style="top:5px;left:20px;">✨</div>
+    <div class="sparkle" style="top:10px;right:30px;animation-delay:1s;">💖</div>
+    <div class="sparkle" style="bottom:5px;left:40%;animation-delay:0.5s;">★</div>
+    <h1>★ MICK et ses BOMBASSES ★</h1>
+    <div class="subtitle">Skyblog officiel • Depuis 2003 • <span class="blink">♥ LIVE ♥</span></div>
+  </div>
+
+  <div class="marquee">
+    <span>★ Bienvenue sur mon skyblog les kékés !!! ★ Mick et ses bombasses en force ★ I love 2000's ★ Tokio Hotel forever ★ Loft Story forever ★ Clique ici pour ajouter aux favoris ★</span>
+  </div>
+
+  <div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- PROFILE -->
+      <div class="box">
+        <div class="box-title">★ Qui c'est Mick ? ★</div>
+        <div class="box-content">
+          <img src="les_plus_belles.png" alt="Mick" class="profile-pic" style="height:160px;object-fit:cover;">
+          <div class="profile-info">
+            <strong>Mick</strong>
+            23 ans • Paris<br>
+            Signe : Lion ♌<br>
+            Statut : En couple avec... TOUTES 😘<br>
+            Hobbies : Clubbing, MSN, iPod, et mes bombasses
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSIC -->
+      <div class="box">
+        <div class="box-title">♪ Ma musique 2000's ♪</div>
+        <div class="box-content">
+          <div class="music-player">
+            <div class="now-playing" id="nowPlaying">▶ Tokio Hotel - Monsoon</div>
+            <ul class="track-list" id="trackList">
+              <li class="active" onclick="playTrack(this, 'Tokio Hotel - Monsoon')">★ Tokio Hotel - Monsoon</li>
+              <li onclick="playTrack(this, 'Tokio Hotel - Through the Looking Glass')">★ Tokio Hotel - Looking Glass</li>
+              <li onclick="playTrack(this, 'Britney Spears - Toxic')">★ Britney - Toxic</li>
+              <li onclick="playTrack(this, 'Shakira - Whenever Wherever')">★ Shakira - Whenever</li>
+              <li onclick="playTrack(this, 'Eminem - Lose Yourself')">★ Eminem - Lose Yourself</li>
+              <li onclick="playTrack(this, 'OutKast - Hey Ya!')">★ OutKast - Hey Ya!</li>
+              <li onclick="playTrack(this, 'The Black Eyed Peas - Where Is The Love')">★ BEP - Where Is The Love</li>
+              <li onclick="playTrack(this, 'Nelly - Hot In Herre')">★ Nelly - Hot In Herre</li>
+              <li onclick="playTrack(this, 'Avril Lavigne - Complicated')">★ Avril - Complicated</li>
+              <li onclick="playTrack(this, 'Linkin Park - In The End')">★ Linkin Park - In The End</li>
+            </ul>
+            <div class="player-controls">
+              <button onclick="prevTrack()">⏮</button>
+              <button onclick="togglePlay()">⏯</button>
+              <button onclick="nextTrack()">⏭</button>
+            </div>
+          </div>
+          <p style="margin-top:8px;font-size:11px;color:#aaa;text-align:center;">
+            Clique sur un titre<br>
+            (ambiance 2003 guaranteed 😎)
+          </p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="box">
+        <div class="box-title">★ Stats ★</div>
+        <div class="box-content" style="text-align:center;font-size:12px;">
+          <div class="counter">👁 Visites : <span id="visits">148 293</span></div>
+          <div>💬 Messages : 2 847</div>
+          <div>⭐ Fans : 9 999+</div>
+          <div style="margin-top:6px;color:#ff66aa;">Dernière co : 14/07/2003</div>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="box">
+        <div class="box-title">★ Mes liens ★</div>
+        <div class="box-content" style="font-size:12px;">
+          <p>→ <a href="#" style="color:#00ffff;">MSN Messenger</a></p>
+          <p>→ <a href="#" style="color:#00ffff;">Mon Skyrock</a></p>
+          <p>→ <a href="#" style="color:#00ffff;">Photos du Loft</a></p>
+          <p>→ <a href="#" style="color:#00ffff;">Club Macumba</a></p>
+          <p>→ <a href="#" style="color:#00ffff;">I ♥ 2000's</a></p>
+        </div>
+      </div>
+
+      <!-- GUESTBOOK -->
+      <div class="box">
+        <div class="box-title">★ Livre d'or ★</div>
+        <div class="box-content">
+          <div class="guestbook-entry">
+            <span class="author">Laura_du_93</span> <span class="date">15/07/03</span><br>
+            Mick t'es trop bg !!! Les filles sont canon 😍
+          </div>
+          <div class="guestbook-entry">
+            <span class="author">Kéké_du_95</span> <span class="date">14/07/03</span><br>
+            Sa mère la soirée au Macumba était de ouf !!!
+          </div>
+          <div class="guestbook-entry">
+            <span class="author">Bombasse_34</span> <span class="date">14/07/03</span><br>
+            Next time on est toutes là 💖💖
+          </div>
+          <p style="text-align:center;margin-top:8px;">
+            <a href="#" style="color:#ff66aa;font-size:12px;">+ Laisser un message</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+      <!-- POST 1 -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Soirée au Macumba 14/07/2003 ★</span>
+          <span class="post-date">14 juillet 2003 • 03:42</span>
+        </div>
+        <div class="post-body">
+          <p>Les gars... quelle soirée de ouf !!! 🔥🔥🔥</p>
+          <p>Toute l'équipe était là, les bombasses en mode paillettes, moi en mode tank top et collier de ouf.</p>
+          <p>On a dansé jusqu'à 6h du mat, Coca, MSN, flip phones, iPod... pure 2003 vibe !!</p>
+          <img src="au_macumba.png" alt="Au Macumba" class="big-photo">
+          <div class="caption">♥ Selfie de ouf avec mes reines ♥</div>
+          <p class="hearts">💖💖💖💖💖</p>
+          <p>Spéciale dédicace à toutes les filles qui ont géré !! Vous êtes les meilleures 😘</p>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Good Times 2003 ★</span>
+          <span class="post-date">14 juillet 2003 • 01:15</span>
+        </div>
+        <div class="post-body">
+          <p>I ♥ 2000's et surtout mes bombasses !!</p>
+          <p>MTV, disco ball, Von Dutch, Nike, paillettes partout... c'était le meilleur des temps.</p>
+          <img src="soiree.jpg" alt="Soirée" class="big-photo">
+          <div class="caption">♥ Good Times... ♥ 14 JUL 2003</div>
+          <p>Qui se souvient de cette soirée ? Les commentaires en dessous !!</p>
+        </div>
+      </div>
+
+      <!-- POST 3 -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Resto avec l'équipe ★</span>
+          <span class="post-date">13 juillet 2003</span>
+        </div>
+        <div class="post-body">
+          <p>Brunch de ouf avec tout le crew !! Flip phones, Gameboy, iPod mini, Bravo magazine, MSN Messenger... on était trop en avance sur notre temps 😎</p>
+          <img src="resto.png" alt="Resto" class="big-photo">
+          <div class="caption">♥ Table des légendes 2000's ♥</div>
+          <p>Regardez un peu le setup : Hello Kitty, Coca, téléphone à clapet, tout y est !!</p>
+        </div>
+      </div>
+
+      <!-- POST 4 -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Les plus belles ★</span>
+          <span class="post-date">12 juillet 2003</span>
+        </div>
+        <div class="post-body">
+          <p>Photo booth avec deux de mes bombasses préférées 😘 Adidas tracksuits, lunettes de soleil, big hoop earrings... pure 2000's energy !!</p>
+          <img src="les_plus_belles.png" alt="Les plus belles" class="big-photo">
+          <div class="caption">♥ Peace & Love baby ♥</div>
+        </div>
+      </div>
+
+      <!-- POST 5 -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Loft Story forever ★</span>
+          <span class="post-date">11 juillet 2003</span>
+        </div>
+        <div class="post-body">
+          <p>Confessionnal mode activé !! Avec mes femmes dans le loft 🔥</p>
+          <p>On a tous mis les looks de ouf : paillettes, jean ceinture large, cuir... TF1 on est prêts !!</p>
+          <img src="avec_mes_femmes.png" alt="Avec mes femmes" class="big-photo">
+          <div class="caption">♥ Confessional Loft Story ♥</div>
+          <p>Qui a regardé Loft Story ? Dites-moi en commentaire !!</p>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="post">
+        <div class="post-header">
+          <span>★ Galerie Bombasses ★</span>
+          <span class="post-date">Toujours</span>
+        </div>
+        <div class="post-body">
+          <p>Toutes les photos de l'équipe en mode 2000's 💖</p>
+          <div class="photo-grid">
+            <img src="au_macumba.png" alt="Macumba">
+            <img src="soiree.jpg" alt="Soirée">
+            <img src="resto.png" alt="Resto">
+            <img src="les_plus_belles.png" alt="Belles">
+            <img src="avec_mes_femmes.png" alt="Femmes">
+          </div>
+          <p style="text-align:center;margin-top:10px;">★ Clique pour zoomer (enfin presque) ★</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>★ Skyblog créé avec amour en 2003 (ou presque) ★</p>
+    <p>Mick et ses Bombasses © 2003-2026 • I ♥ 2000's • Tokio Hotel forever</p>
+    <p style="margin-top:8px;font-size:11px;">
+      <span class="blink">♥</span> Ce site est optimisé pour Internet Explorer 6 et Netscape <span class="blink">♥</span><br>
+      Meilleure résolution : 800x600 • Flash Player recommandé
+    </p>
+  </div>
+
+</div>
+
+<script>
+// Fake music player
+const tracks = [
+  "Tokio Hotel - Monsoon",
+  "Tokio Hotel - Through the Looking Glass",
+  "Britney Spears - Toxic",
+  "Shakira - Whenever Wherever",
+  "Eminem - Lose Yourself",
+  "OutKast - Hey Ya!",
+  "The Black Eyed Peas - Where Is The Love",
+  "Nelly - Hot In Herre",
+  "Avril Lavigne - Complicated",
+  "Linkin Park - In The End"
+];
+let current = 0;
+let playing = true;
+
+function playTrack(el, title) {
+  document.querySelectorAll('.track-list li').forEach(li => li.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('nowPlaying').textContent = '▶ ' + title;
+  current = tracks.indexOf(title);
+  playing = true;
+}
+
+function togglePlay() {
+  playing = !playing;
+  const np = document.getElementById('nowPlaying');
+  if (playing) {
+    np.textContent = '▶ ' + tracks[current];
+  } else {
+    np.textContent = '⏸ ' + tracks[current];
+  }
+}
+
+function nextTrack() {
+  current = (current + 1) % tracks.length;
+  const lis = document.querySelectorAll('.track-list li');
+  playTrack(lis[current], tracks[current]);
+}
+
+function prevTrack() {
+  current = (current - 1 + tracks.length) % tracks.length;
+  const lis = document.querySelectorAll('.track-list li');
+  playTrack(lis[current], tracks[current]);
+}
+
+// Fake visit counter
+setInterval(() => {
+  const el = document.getElementById('visits');
+  let n = parseInt(el.textContent.replace(/\s/g, '')) + Math.floor(Math.random() * 3);
+  el.textContent = n.toLocaleString('fr-FR');
+}, 5000);
+</script>
+
+</body>
+</html>
